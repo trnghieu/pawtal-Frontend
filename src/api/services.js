@@ -9,7 +9,10 @@ export const PetAPI = {
   list: () => http.get('/pets'),
   get: (id) => http.get(`/pets/${id}`)
 };
-
+export const getProducts = async () => {
+  const res = await http.get("/products");
+  return res.data;
+};
 export const HealthAPI = {
   get: (petId) => http.get(`/health-records/${petId}`)
 };

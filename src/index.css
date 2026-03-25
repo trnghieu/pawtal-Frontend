@@ -462,3 +462,375 @@ img { max-width: 100%; display: block; }
   .promo-large { min-height: 260px; }
   .promo-service h3 { font-size: 22px; }
 }
+.shop-page {
+  min-height: 100vh;
+  background: #efefef;
+  color: #0d5b93;
+}
+
+.shop-hero {
+  background: #035f9e;
+}
+
+.shop-hero__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  min-height: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  align-items: end;
+  gap: 16px;
+  padding: 24px 24px 0;
+}
+
+.shop-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 220px;
+  padding-bottom: 34px;
+}
+
+.shop-hero__logo {
+  width: 180px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.shop-hero__text {
+  color: #fffef3;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+.shop-hero__pets {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.shop-hero__pets img {
+  width: 100%;
+  max-width: 420px;
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.shop-tagline {
+  background: #efe8d0;
+  text-align: center;
+  padding: 14px 12px;
+  color: #474747;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.shop-section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 28px 24px 0;
+}
+
+.shop-title {
+  text-align: center;
+  color: #0d5b93;
+  font-size: 34px;
+  line-height: 1.1;
+  margin: 0 0 24px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.shop-pet-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  justify-content: center;
+  gap: 32px;
+}
+
+.shop-pet-card {
+  text-align: center;
+}
+
+.shop-pet-card__image {
+  background: #d8c9b7;
+  border-radius: 28px;
+  overflow: hidden;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 10px;
+}
+
+.shop-pet-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shop-pet-card__label {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #0d5b93;
+}
+
+.shop-popular-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 180px));
+  justify-content: center;
+  gap: 30px;
+}
+
+.shop-popular-card {
+  text-align: center;
+}
+
+.shop-popular-card__image {
+  background: #f3edd9;
+  border-radius: 28px;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-popular-card__image img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+}
+
+.shop-popular-card__label {
+  margin: 0;
+  color: #0d5b93;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.shop-featured {
+  padding-bottom: 32px;
+}
+
+.shop-featured__header {
+  border-bottom: 2px solid #6e99bd;
+  margin-bottom: 20px;
+}
+
+.shop-featured__header h3 {
+  margin: 0 0 10px;
+  color: #0d5b93;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.shop-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.shop-featured-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shop-featured-card__image {
+  width: 100%;
+  max-width: 220px;
+  height: 290px;
+  background: #f3edd9;
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.shop-featured-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shop-featured-card__body {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.shop-featured-card__body h4 {
+  min-height: 44px;
+  margin: 0 0 8px;
+  color: #0d5b93;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.shop-featured-card__body p {
+  margin: 0 0 12px;
+  color: #0d5b93;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.shop-featured-card__body button {
+  border: none;
+  background: #eca357;
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  border-radius: 999px;
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.shop-featured-card__body button:hover {
+  opacity: 0.9;
+}
+
+.shop-footer {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 18px 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.shop-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shop-footer__col span {
+  color: #0d5b93;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.shop-footer__col a {
+  color: #0d5b93;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.shop-socials {
+  display: flex;
+  gap: 8px;
+}
+
+.shop-socials a {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #0d5b93;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.shop-state {
+  text-align: center;
+  color: #0d5b93;
+  padding: 32px 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.shop-state--error {
+  color: #c44d4d;
+}
+
+@media (max-width: 900px) {
+  .shop-hero__inner {
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding-top: 24px;
+  }
+
+  .shop-hero__content {
+    min-height: auto;
+    padding-bottom: 0;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+
+  .shop-hero__text {
+    font-size: 18px;
+  }
+
+  .shop-hero__pets img {
+    max-width: 360px;
+    height: 220px;
+  }
+
+  .shop-title {
+    font-size: 28px;
+  }
+
+  .shop-popular-grid,
+  .shop-featured-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .shop-footer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .shop-tagline {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .shop-pet-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .shop-pet-card__image {
+    width: 190px;
+    height: 190px;
+  }
+
+  .shop-popular-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .shop-popular-card__image {
+    width: 160px;
+    height: 160px;
+  }
+
+  .shop-featured-card__image {
+    max-width: 200px;
+    height: 260px;
+  }
+
+  .shop-title {
+    font-size: 24px;
+  }
+
+  .shop-pet-card__label,
+  .shop-popular-card__label,
+  .shop-featured-card__body h4,
+  .shop-featured-card__body p {
+    font-size: 16px;
+  }
+}
