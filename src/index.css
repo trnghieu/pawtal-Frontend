@@ -834,3 +834,175 @@ img { max-width: 100%; display: block; }
     font-size: 16px;
   }
 }
+.health-summary-row {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.health-pet-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.health-pet-image-wrap {
+  width: 100%;
+  background: #d9d9d9;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.health-pet-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: block;
+  object-fit: cover;
+}
+
+.health-pet-actions {
+  margin-top: -22px;
+  display: flex;
+  gap: 14px;
+  z-index: 2;
+}
+
+.health-icon-btn {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.health-basic-card {
+  background: #dedede;
+  border-radius: 34px;
+  padding: 28px 40px 26px;
+  min-height: 100%;
+}
+
+.health-basic-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.health-basic-card__head h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #3d3d3d;
+  text-transform: uppercase;
+}
+
+.health-edit-btn {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  color: #555;
+}
+
+.health-basic-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.health-line-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+}
+
+.health-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #9a9a9a;
+  padding-bottom: 8px;
+  min-width: 0;
+}
+
+.health-line--full {
+  width: 100%;
+}
+
+.health-line .label {
+  flex: 0 0 auto;
+  font-size: 13px;
+  font-weight: 500;
+  color: #686868;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.health-line .value {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #565656;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lang-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: #e7a15f;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .health-summary-row {
+    grid-template-columns: 1fr;
+  }
+
+  .health-pet-panel {
+    max-width: 340px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .health-basic-card {
+    padding: 22px 20px;
+  }
+
+  .health-line-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .health-basic-card__head h3 {
+    font-size: 18px;
+  }
+
+  .health-line .label,
+  .health-line .value {
+    font-size: 12px;
+  }
+
+  .health-summary-row {
+    gap: 18px;
+  }
+}
