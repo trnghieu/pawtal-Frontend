@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cloudinaryUrl, imageOrFallback } from '../utils/cloudinary';
 
 export default function HomePage() {
+  const [selectedColor, setSelectedColor] = useState('pink');
+
   const hero = imageOrFallback(
     cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_HERO, { transforms: 'f_auto,q_auto,w_1600' }),
     'https://res.cloudinary.com/dlipnztpt/image/upload/v1774416114/pawtal/pets/nlfd8twrjtiljpvl2y7l.png'
@@ -12,23 +15,50 @@ export default function HomePage() {
     'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=900&q=80'
   );
 
-  const collar1 = imageOrFallback(
-    cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_COLLAR_1, { transforms: 'f_auto,q_auto,w_420' }),
-    'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=420&q=80'
+  const collarColorImages = {
+    pink: imageOrFallback(
+      cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_COLLAR_PINK, { transforms: 'f_auto,q_auto,w_600' }),
+      'https://res.cloudinary.com/dlipnztpt/image/upload/v1774421100/Untitled_design__5_-removebg-preview_2_fqivd0.png'
+    ),
+    green: imageOrFallback(
+      cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_COLLAR_GREEN, { transforms: 'f_auto,q_auto,w_600' }),
+      'https://res.cloudinary.com/dlipnztpt/image/upload/v1774421101/Untitled_design__3_-removebg-preview_ybzgb9.png'
+    ),
+    blue: imageOrFallback(
+      cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_COLLAR_BLUE, { transforms: 'f_auto,q_auto,w_600' }),
+      'https://res.cloudinary.com/dlipnztpt/image/upload/v1774421100/Untitled_design__4_-removebg-preview_ir25x0.png'
+    ),
+  };
+
+  const previewCat = imageOrFallback(
+    cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_COLLAR_CAT, { transforms: 'f_auto,q_auto,w_700' }),
+    'https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=700&q=80'
   );
-  const collar2 = imageOrFallback(
-    cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_COLLAR_2, { transforms: 'f_auto,q_auto,w_420' }),
-    'https://images.unsplash.com/photo-1534361960057-19889db9621e?auto=format&fit=crop&w=420&q=80'
-  );
-  const collar3 = imageOrFallback(
-    cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_COLLAR_3, { transforms: 'f_auto,q_auto,w_420' }),
-    'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=420&q=80'
+
+  const previewDog = imageOrFallback(
+    cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_COLLAR_DOG, { transforms: 'f_auto,q_auto,w_800' }),
+    'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80'
   );
 
   const bottomImages = [
-    imageOrFallback(cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_CARD_1, { transforms: 'f_auto,q_auto,w_700' }), 'https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&fit=crop&w=700&q=80'),
-    imageOrFallback(cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_CARD_2, { transforms: 'f_auto,q_auto,w_700' }), 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=700&q=80'),
-    imageOrFallback(cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_CARD_3, { transforms: 'f_auto,q_auto,w_1000' }), 'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=1000&q=80')
+    imageOrFallback(
+      cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_CARD_1, { transforms: 'f_auto,q_auto,w_700' }),
+      'https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&fit=crop&w=700&q=80'
+    ),
+    imageOrFallback(
+      cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_CARD_2, { transforms: 'f_auto,q_auto,w_700' }),
+      'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=700&q=80'
+    ),
+    imageOrFallback(
+      cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_CARD_3, { transforms: 'f_auto,q_auto,w_1000' }),
+      'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=1000&q=80'
+    )
+  ];
+
+  const collarThumbs = [
+    { key: 'green', src: collarColorImages.green, label: 'Green collar' },
+    { key: 'pink', src: collarColorImages.pink, label: 'Pink collar' },
+    { key: 'blue', src: collarColorImages.blue, label: 'Blue collar' },
   ];
 
   return (
@@ -60,30 +90,52 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="collar-showcase">
-        <div className="collar-copy">
-          <div className="section-kicker">MẪU SẢN</div>
+      <section className="smart-collar-home">
+        <div className="smart-collar-home__heading">
+          <div className="smart-collar-home__kicker">MUA SẮM</div>
           <h2>VÒNG CỔ THÔNG MINH</h2>
-          <div className="product-info-title">THÔNG TIN SẢN PHẨM</div>
-          <ul>
-            <li>Vòng cổ thông minh GPS/NFC</li>
-            <li>Thời gian pin 3 - 7 ngày</li>
-            <li>Có chống sốc, chống nước nhẹ</li>
-            <li>Thiết kế nhiều màu pastel</li>
-          </ul>
         </div>
-        <div className="collar-visuals">
-          <div className="collar-stripes">
-            <span className="stripe pink"></span>
-            <span className="stripe mint"></span>
-            <span className="stripe cream"></span>
+
+        <div className="smart-collar-home__grid">
+          <div className="smart-collar-home__info">
+            <h4>THÔNG TIN SẢN PHẨM</h4>
+            <ul>
+              <li>Vòng cổ thông minh (QR/NFC)</li>
+              <li>Thời gian gửi: 3-7 ngày</li>
+              <li>Độ chính xác GPS: &lt; 10m</li>
+              <li>Trọng lượng: 20g - 45g</li>
+              <li>Chất liệu: Silicone/Vải</li>
+              <li>Màu sắc: Lựa chọn màu yêu thích</li>
+            </ul>
           </div>
-          <div className="collar-gallery home-collar-gallery">
-            <img src={collar1} alt="Vòng cổ 1" />
-            <img src={collar2} alt="Vòng cổ 2" />
-            <img src={collar3} alt="Vòng cổ 3" />
+
+          <div className="smart-collar-home__colors">
+            {collarThumbs.map((item) => (
+              <button
+                key={item.key}
+                type="button"
+                className={`collar-color-thumb ${selectedColor === item.key ? 'active' : ''}`}
+                onClick={() => setSelectedColor(item.key)}
+                aria-label={item.label}
+              >
+                <img src={item.src} alt={item.label} />
+              </button>
+            ))}
           </div>
-          <Link className="primary-btn small" to="/dich-vu/mua-sam">Mua hàng</Link>
+
+          <div className="smart-collar-home__preview smart-collar-home__preview--small">
+            <img src={previewCat} alt="Mèo đeo vòng cổ" />
+          </div>
+
+          <div className="smart-collar-home__preview smart-collar-home__preview--large">
+            <img src={previewDog} alt="Chó đeo vòng cổ" />
+          </div>
+
+          <div className="smart-collar-home__cta">
+            <Link className="smart-collar-buy-btn" to="/dich-vu/mua-sam">
+              Mua ngay
+            </Link>
+          </div>
         </div>
       </section>
 
