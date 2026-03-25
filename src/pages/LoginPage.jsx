@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link} from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/logo.png';
 
@@ -13,7 +13,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(location.state?.from || '/ho-so/dinh-danh', { replace: true });
+      navigate(location.state?.from || '/', { replace: true });
     }
   }, [isAuthenticated, navigate, location.state]);
 
@@ -23,7 +23,7 @@ export default function LoginPage() {
       setLoading(true);
       setError('');
       await login(form);
-      navigate(location.state?.from || '/ho-so/dinh-danh', { replace: true });
+      navigate(location.state?.from || '/', { replace: true });
     } catch (err) {
       setError(err.response?.data?.message || 'Đăng nhập thất bại');
     } finally {
@@ -47,6 +47,9 @@ export default function LoginPage() {
         </label>
         {error ? <div className="error-text">{error}</div> : null}
         <button className="primary-btn" disabled={loading}>{loading ? 'Đang đăng nhập...' : 'Đăng nhập'}</button>
+        <p className="auth-switch">
+          Chưa có tài khoản? <Link to="/dang-ky">Đăng ký</Link>
+        </p>
       </form>
     </div>
   );

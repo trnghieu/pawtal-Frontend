@@ -13,7 +13,7 @@ import SecurityPage from './pages/SecurityPage';
 import MembersPage from './pages/MembersPage';
 import SupportPage from './pages/SupportPage';
 import LoginPage from './pages/LoginPage';
-
+import RegisterPage from "./pages/RegisterPage";
 export default function App() {
   return (
     <Routes>
@@ -31,6 +31,8 @@ export default function App() {
         <Route path="/ho-so/bao-mat" element={<ProtectedRoute><SecurityPage /></ProtectedRoute>} />
         <Route path="/ho-so/thanh-vien" element={<ProtectedRoute><MembersPage /></ProtectedRoute>} />
       </Route>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/dang-ky" element={<RegisterPage />} />
       <Route path="*" element={<Navigate to="/dich-vu" replace />} />
     </Routes>
   );

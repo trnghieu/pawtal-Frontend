@@ -4,7 +4,15 @@ export const AuthAPI = {
   login: (data) => http.post('/auth/login', data),
   me: () => http.get('/auth/me')
 };
+export const login = async (payload) => {
+  const res = await http.post("/auth/login", payload);
+  return res.data;
+};
 
+export const register = async (payload) => {
+  const res = await http.post("/auth/register", payload);
+  return res.data;
+};
 export const PetAPI = {
   list: () => http.get('/pets'),
   get: (id) => http.get(`/pets/${id}`)

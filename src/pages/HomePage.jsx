@@ -36,7 +36,7 @@ export default function HomePage() {
       <section className="home-hero" style={{ backgroundImage: `url(${hero})` }}>
         <div className="hero-actions">
           <Link className="pill-cta" to="/dang-nhap">Đăng nhập</Link>
-          <Link className="pill-cta" to="/dang-nhap">Đăng ký</Link>
+          <Link className="pill-cta" to="/dang-ky">Đăng ký</Link>
         </div>
       </section>
 
