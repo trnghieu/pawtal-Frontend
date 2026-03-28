@@ -1,19 +1,31 @@
+const members = [
+  { id: 1, name: "Nguyễn Minh Anh", role: "Chủ nuôi chính", email: "minhanh@pawtal.local" },
+  { id: 2, name: "Trần Thu Hà", role: "Người thân", email: "thuha@pawtal.local" },
+  { id: 3, name: "Phòng khám PETPRO", role: "Đối tác chăm sóc", email: "support@petpro.vn" },
+];
+
 export default function MembersPage() {
   return (
     <div className="page-shell page-stack">
-      <section className="page-banner blue-card inverse">
-        <h1>Thành viên</h1>
-        <p>Mời thành viên gia đình hoặc bác sĩ thú y cùng theo dõi hồ sơ và lịch sử chăm sóc.</p>
+      <section className="settings-page-card">
+        <div className="settings-page-card__head">
+          <h1>Thành viên liên kết</h1>
+          <span className="lang-chip">MEMBERS</span>
+        </div>
+
+        <div className="member-grid">
+          {members.map((member) => (
+            <article key={member.id} className="member-card">
+              <div className="member-card__avatar">{member.name.charAt(0)}</div>
+              <div className="member-card__body">
+                <h3>{member.name}</h3>
+                <p>{member.role}</p>
+                <span>{member.email}</span>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
-      <div className="simple-grid">
-        {['Minh Anh', 'Bác sĩ Lan', 'Anh Huy'].map((name) => (
-          <article key={name} className="card-soft member-card">
-            <div className="avatar-circle">{name[0]}</div>
-            <h3>{name}</h3>
-            <p>{name === 'Bác sĩ Lan' ? 'Veterinarian' : 'Chủ sở hữu được chia sẻ quyền truy cập'}</p>
-          </article>
-        ))}
-      </div>
     </div>
   );
 }

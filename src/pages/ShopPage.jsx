@@ -1,47 +1,115 @@
-import { useEffect, useMemo, useState } from 'react';
-import { ProductAPI } from '../api/services';
-import { imageOrFallback } from '../utils/cloudinary';
-import { formatCurrency } from '../utils/format';
+import FooterCompact from "../components/common/FooterCompact";
+import FeaturedProductsSection from "../components/shop/FeaturedProductsSection";
+import PetCategorySection from "../components/shop/PetCategorySection";
+import PopularProductsSection from "../components/shop/PopularProductsSection";
+import ShopHero from "../components/shop/ShopHero";
+import { cloudinaryUrl, imageOrFallback } from "../utils/cloudinary";
 
 export default function ShopPage() {
-  const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState('all');
+  const petCategories = [
+    {
+      id: "dog",
+      name: "CHÓ",
+      image: imageOrFallback(
+        cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_DOG, {
+          transforms: "f_auto,q_auto,w_700",
+        }),
+        "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=700&q=80"
+      ),
+    },
+    {
+      id: "cat",
+      name: "MÈO",
+      image: imageOrFallback(
+        cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_CAT, {
+          transforms: "f_auto,q_auto,w_700",
+        }),
+        "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=700&q=80"
+      ),
+    },
+  ];
 
-  useEffect(() => {
-    ProductAPI.list().then((res) => setProducts(res.data?.data || [])).catch(() => setProducts([]));
-  }, []);
+  const popularProducts = [
+    {
+      id: "food",
+      name: "ĐỒ ĂN",
+      image: imageOrFallback(
+        cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_FOOD, {
+          transforms: "f_auto,q_auto,w_500",
+        }),
+        "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&w=500&q=80"
+      ),
+    },
+    {
+      id: "collar",
+      name: "VÒNG CỔ",
+      accent: true,
+      image: imageOrFallback(
+        cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_COLLAR, {
+          transforms: "f_auto,q_auto,w_500",
+        }),
+        "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=500&q=80"
+      ),
+    },
+    {
+      id: "toy",
+      name: "ĐỒ CHƠI",
+      image: imageOrFallback(
+        cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_TOY, {
+          transforms: "f_auto,q_auto,w_500",
+        }),
+        "https://images.unsplash.com/photo-1560743173-567a3b5658b1?auto=format&fit=crop&w=500&q=80"
+      ),
+    },
+  ];
 
-  const filtered = useMemo(() => category === 'all' ? products : products.filter((item) => item.category === category), [products, category]);
+  const featuredProducts = [
+    {
+      id: "gps-collar",
+      name: "VÒNG CỔ KÈM ĐỊNH VỊ",
+      price: "550.000 VND",
+      large: true,
+      image: imageOrFallback(
+        cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_FEATURED_1, {
+          transforms: "f_auto,q_auto,w_700",
+        }),
+        "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=700&q=80"
+      ),
+    },
+    {
+      id: "strap",
+      name: "DÂY ĐEO",
+      price: "150.000 VND",
+      image: imageOrFallback(
+        cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_FEATURED_2, {
+          transforms: "f_auto,q_auto,w_700",
+        }),
+        "https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?auto=format&fit=crop&w=700&q=80"
+      ),
+    },
+    {
+      id: "tracker",
+      name: "ĐỊNH VỊ",
+      price: "450.000 VND",
+      image: imageOrFallback(
+        cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_FEATURED_3, {
+          transforms: "f_auto,q_auto,w_700",
+        }),
+        "https://images.unsplash.com/photo-1583512603806-077998240c7a?auto=format&fit=crop&w=700&q=80"
+      ),
+    },
+  ];
 
   return (
     <div className="page-shell page-stack">
-      <section className="page-banner cream-card">
-        <h1>Mua sắm cho thú cưng</h1>
-        <p>Chọn sản phẩm phù hợp với hồ sơ sức khỏe và thói quen vận động của bé.</p>
-      </section>
-      <div className="filter-row">
-        {['all', 'food', 'accessory', 'toy'].map((item) => (
-          <button key={item} className={`filter-chip ${category === item ? 'active' : ''}`} onClick={() => setCategory(item)}>
-            {item === 'all' ? 'Tất cả' : item}
-          </button>
-        ))}
+      <div className="shop-page-v2 shop-page-v2--boxed">
+        <ShopHero />
+        <PetCategorySection items={petCategories} />
+        <PopularProductsSection items={popularProducts} />
+        <FeaturedProductsSection items={featuredProducts} />
       </div>
-      <div className="product-grid shop-grid">
-        {filtered.map((item) => (
-          <article className="product-card shop-card" key={item._id}>
-            <div className="product-image-wrap"><img src={imageOrFallback(item.image, 'https://placehold.co/640x760/f1e8d6/0b5d91?text=Pawtal')} alt={item.name} /></div>
-            <div className="product-info">
-              <span className="category-tag">{item.category}</span>
-              <h3>{item.name}</h3>
-              <p>{item.description}</p>
-              <div className="product-foot">
-                <strong>{formatCurrency(item.price)}</strong>
-                <button className="primary-btn small">Mua ngay</button>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
+
+      <FooterCompact />
     </div>
   );
 }

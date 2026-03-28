@@ -1,15 +1,38 @@
 export default function SecurityPage() {
   return (
     <div className="page-shell page-stack">
-      <section className="page-banner cream-card">
-        <h1>Bảo mật</h1>
-        <p>Quản lý thông báo mất tích, quyền truy cập và xác thực tài khoản.</p>
+      <section className="settings-page-card">
+        <div className="settings-page-card__head">
+          <h1>Bảo mật tài khoản</h1>
+          <span className="lang-chip">SECURITY</span>
+        </div>
+
+        <div className="settings-list">
+          <article className="settings-item">
+            <div>
+              <h3>Đổi mật khẩu</h3>
+              <p>Cập nhật mật khẩu định kỳ để đảm bảo an toàn cho tài khoản.</p>
+            </div>
+            <button className="primary-btn small">Cập nhật</button>
+          </article>
+
+          <article className="settings-item">
+            <div>
+              <h3>Thiết bị đăng nhập</h3>
+              <p>Kiểm tra những thiết bị gần đây đã truy cập Pawtal.</p>
+            </div>
+            <button className="secondary-btn small">Xem danh sách</button>
+          </article>
+
+          <article className="settings-item">
+            <div>
+              <h3>Xác thực 2 bước</h3>
+              <p>Tăng cường bảo mật bằng mã xác nhận khi đăng nhập.</p>
+            </div>
+            <button className="secondary-btn small">Bật tính năng</button>
+          </article>
+        </div>
       </section>
-      <div className="simple-grid">
-        <article className="card-soft simple-card"><h3>Xác thực 2 bước</h3><p>Kích hoạt xác thực để bảo vệ hồ sơ và vị trí thú cưng.</p></article>
-        <article className="card-soft simple-card"><h3>Thông báo mất tích</h3><p>Nhận cảnh báo khi thú cưng rời khỏi vùng an toàn.</p></article>
-        <article className="card-soft simple-card"><h3>Thiết bị đáng tin cậy</h3><p>Quản lý danh sách thiết bị đã từng đăng nhập.</p></article>
-      </div>
     </div>
   );
 }

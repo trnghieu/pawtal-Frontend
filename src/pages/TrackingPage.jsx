@@ -1,49 +1,61 @@
-import usePetData from '../hooks/usePetData';
-import { cloudinaryUrl, imageOrFallback } from '../utils/cloudinary';
+import usePetData from "../hooks/usePetData";
 
-const markerPositions = [
-  { left: '48%', top: '28%' },
-  { left: '63%', top: '35%' },
-  { left: '54%', top: '66%' },
-  { left: '76%', top: '54%' }
+const fakePins = [
+  { id: "p1", top: "26%", left: "34%" },
+  { id: "p2", top: "38%", left: "58%" },
+  { id: "p3", top: "62%", left: "44%" },
+  { id: "p4", top: "70%", left: "72%" },
 ];
 
 export default function TrackingPage() {
   const { pets, selectedPetId, setSelectedPetId } = usePetData();
-  const mapImage = imageOrFallback(cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_TRACKING_MAP, { transforms: 'f_auto,q_auto,w_1800' }), 'https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1600&q=80');
 
   return (
-    <div className="page-shell tracking-shell">
-      <div className="tracking-layout">
+    <div className="page-shell page-stack">
+      <section className="tracking-page">
         <aside className="tracking-sidebar">
-          <div className="sidebar-group">
+          <div className="tracking-sidebar__group">
             <h3>Danh sách thú cưng</h3>
-            <div className="pet-list">
+            <div className="tracking-pet-list">
               {pets.map((pet) => (
-                <button key={pet._id} className={`pet-list-item ${selectedPetId === pet._id ? 'active' : ''}`} onClick={() => setSelectedPetId(pet._id)}>
-                  <img src={pet.avatar.url || 'https://placehold.co/48x48/ece4d5/0b5d91?text=P'} alt={pet.name} />
+                <button
+                  key={pet._id}
+                  type="button"
+                  className={`tracking-pet-item ${selectedPetId === pet._id ? "active" : ""}`}
+                  onClick={() => setSelectedPetId(pet._id)}
+                >
+                  <img
+                    src={pet?.avatar?.url || pet?.avatar || "https://placehold.co/100x100"}
+                    alt={pet.name}
+                  />
                   <span>{pet.name}</span>
                 </button>
               ))}
             </div>
           </div>
-          <div className="sidebar-group">
+
+          <div className="tracking-sidebar__group">
             <h3>Chức năng</h3>
-            <ul className="sidebar-links">
+            <ul className="tracking-menu">
               <li>Lịch sử di chuyển</li>
               <li>Thông báo mất tích</li>
               <li>Cài đặt</li>
             </ul>
           </div>
         </aside>
-        <section className="map-panel" style={{ backgroundImage: `url(${mapImage})` }}>
-          {markerPositions.slice(0, Math.max(pets.length, 3)).map((pos, index) => (
-            <div key={`${pos.left}-${pos.top}`} className="map-marker" style={pos}>
-              <img src={pets[index]?.avatar?.url || 'https://placehold.co/48x48/ece4d5/0b5d91?text=P'} alt="marker" />
-            </div>
+
+        <div className="tracking-map">
+          <img
+            src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1600&q=80"
+            alt="Map"
+          />
+          {fakePins.map((pin) => (
+            <span key={pin.id} className="map-pin" style={{ top: pin.top, left: pin.left }}>
+              📍
+            </span>
           ))}
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

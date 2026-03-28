@@ -1,70 +1,68 @@
-import { useEffect, useState } from 'react';
-import { HealthAPI, PetAPI, VaccinationAPI, VisitAPI } from '../api/services';
+import { useEffect, useMemo, useState } from "react";
+import {
+  getHealthRecordByPet,
+  getMedicalVisitsByPet,
+  getMyPets,
+  getVaccinationsByPet,
+} from "../api/services";
+
+function normalizeArray(res) {
+  if (Array.isArray(res)) return res;
+  if (Array.isArray(res?.data)) return res.data;
+  if (Array.isArray(res?.items)) return res.items;
+  return [];
+}
+
+function normalizeObject(res) {
+  if (!res) return null;
+  if (res.data && !Array.isArray(res.data)) return res.data;
+  return res;
+}
 
 export default function usePetData() {
   const [pets, setPets] = useState([]);
-  const [selectedPetId, setSelectedPetId] = useState('');
+  const [selectedPetId, setSelectedPetId] = useState("");
   const [health, setHealth] = useState(null);
   const [vaccinations, setVaccinations] = useState([]);
   const [visits, setVisits] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let ignore = false;
-
-    async function loadPets() {
-      try {
-        setLoading(true);
-        const petRes = await PetAPI.list();
-        const nextPets = petRes.data?.data || [];
-        if (ignore) return;
-        setPets(nextPets);
-        const firstId = nextPets[0]?._id || '';
-        setSelectedPetId((prev) => prev || firstId);
-      } catch {
-        if (!ignore) setPets([]);
-      } finally {
-        if (!ignore) setLoading(false);
-      }
-    }
-
-    loadPets();
-    return () => {
-      ignore = true;
-    };
+    (async () => {
+      const res = await getMyPets();
+      const petList = normalizeArray(res);
+      setPets(petList);
+      if (petList[0]?._id) setSelectedPetId(petList[0]._id);
+    })();
   }, []);
 
   useEffect(() => {
     if (!selectedPetId) return;
-    let ignore = false;
 
-    async function loadDetails() {
-      try {
-        const [healthRes, vaxRes, visitRes] = await Promise.all([
-          HealthAPI.get(selectedPetId).catch(() => ({ data: { data: null } })),
-          VaccinationAPI.list(selectedPetId).catch(() => ({ data: { data: [] } })),
-          VisitAPI.list(selectedPetId).catch(() => ({ data: { data: [] } }))
-        ]);
-        if (ignore) return;
-        setHealth(healthRes.data?.data || null);
-        setVaccinations(vaxRes.data?.data || []);
-        setVisits(visitRes.data?.data || []);
-      } catch {
-        if (!ignore) {
-          setHealth(null);
-          setVaccinations([]);
-          setVisits([]);
-        }
-      }
-    }
+    (async () => {
+      const [healthRes, vaccineRes, visitRes] = await Promise.all([
+        getHealthRecordByPet(selectedPetId),
+        getVaccinationsByPet(selectedPetId),
+        getMedicalVisitsByPet(selectedPetId),
+      ]);
 
-    loadDetails();
-    return () => {
-      ignore = true;
-    };
+      setHealth(normalizeObject(healthRes));
+      setVaccinations(normalizeArray(vaccineRes));
+      setVisits(normalizeArray(visitRes));
+    })();
   }, [selectedPetId]);
 
-  const selectedPet = pets.find((pet) => pet._id === selectedPetId) || pets[0] || null;
+  const selectedPet = useMemo(
+    () => pets.find((item) => item._id === selectedPetId) || null,
+    [pets, selectedPetId]
+  );
 
-  return { pets, selectedPet, selectedPetId, setSelectedPetId, health, vaccinations, visits, loading };
+  return {
+    pets,
+    selectedPet,
+    selectedPetId,
+    setSelectedPetId,
+    health,
+    vaccinations,
+    visits,
+  };
 }

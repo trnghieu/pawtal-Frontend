@@ -1,35 +1,50 @@
-import { useEffect, useState } from 'react';
-import { ServiceAPI } from '../api/services';
-import { imageOrFallback } from '../utils/cloudinary';
-import { formatCurrency } from '../utils/format';
+const packages = [
+  {
+    id: "basic",
+    name: "GÓI CƠ BẢN",
+    price: "199.000 VND",
+    features: ["Hồ sơ thú cưng", "Lưu lịch sử sức khỏe", "QR định danh"],
+  },
+  {
+    id: "plus",
+    name: "GÓI PLUS",
+    price: "399.000 VND",
+    features: ["Toàn bộ gói cơ bản", "Nhắc lịch tiêm", "Định vị cơ bản"],
+  },
+  {
+    id: "pro",
+    name: "GÓI PRO",
+    price: "699.000 VND",
+    features: ["Toàn bộ gói plus", "Theo dõi GPS nâng cao", "Hỗ trợ ưu tiên"],
+  },
+];
 
 export default function ServicePackagesPage() {
-  const [services, setServices] = useState([]);
-  useEffect(() => {
-    ServiceAPI.list().then((res) => setServices(res.data?.data || [])).catch(() => setServices([]));
-  }, []);
-
   return (
     <div className="page-shell page-stack">
-      <section className="page-banner blue-card inverse">
+      <section className="packages-hero">
         <h1>Gói dịch vụ Pawtal</h1>
-        <p>Tổng hợp hồ sơ số, định vị, lịch tiêm và chăm sóc cộng đồng trong các gói linh hoạt.</p>
+        <p>
+          Lựa chọn giải pháp phù hợp cho nhu cầu chăm sóc, nhận diện và định vị thú cưng.
+        </p>
       </section>
-      <div className="services-grid">
-        {services.map((item) => (
-          <article key={item._id} className="service-card">
-            <div className="service-card-image"><img src={imageOrFallback(item.image, 'https://placehold.co/800x520/dcecf7/0b5d91?text=Pawtal')} alt={item.name} /></div>
-            <div className="service-card-body">
-              <h3>{item.name}</h3>
-              <p>{item.description || 'Gói dịch vụ chăm sóc và quản lý toàn diện cho thú cưng.'}</p>
-              <div className="service-card-foot">
-                <span>{item.duration} phút</span>
-                <strong>{formatCurrency(item.price)}</strong>
-              </div>
+
+      <section className="packages-grid">
+        {packages.map((pkg) => (
+          <article key={pkg.id} className="package-card">
+            <div className="package-card__head">
+              <h2>{pkg.name}</h2>
+              <div className="package-card__price">{pkg.price}</div>
             </div>
+            <ul>
+              {pkg.features.map((feature) => (
+                <li key={feature}>{feature}</li>
+              ))}
+            </ul>
+            <button className="primary-btn">Chọn gói</button>
           </article>
         ))}
-      </div>
+      </section>
     </div>
   );
 }

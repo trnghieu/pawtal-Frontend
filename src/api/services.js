@@ -1,50 +1,21 @@
-import http from './http';
+import http from "./http";
 
-export const AuthAPI = {
-  login: (data) => http.post('/auth/login', data),
-  me: () => http.get('/auth/me')
-};
-export const login = async (payload) => {
-  const res = await http.post("/auth/login", payload);
-  return res.data;
-};
+export const login = async (payload) => (await http.post("/auth/login", payload)).data;
+export const register = async (payload) => (await http.post("/auth/register", payload)).data;
 
-export const register = async (payload) => {
-  const res = await http.post("/auth/register", payload);
-  return res.data;
-};
-export const PetAPI = {
-  list: () => http.get('/pets'),
-  get: (id) => http.get(`/pets/${id}`)
-};
-export const getProducts = async () => {
-  const res = await http.get("/products");
-  return res.data;
-};
-export const HealthAPI = {
-  get: (petId) => http.get(`/health-records/${petId}`)
-};
+export const getMyPets = async () => (await http.get("/pets")).data;
+export const getPetById = async (id) => (await http.get(`/pets/${id}`)).data;
 
-export const VaccinationAPI = {
-  list: (petId) => http.get(`/vaccinations/pet/${petId}`)
-};
+export const getHealthRecordByPet = async (petId) =>
+  (await http.get(`/health-records/${petId}`)).data;
 
-export const VisitAPI = {
-  list: (petId) => http.get(`/visits/pet/${petId}`)
-};
+export const getVaccinationsByPet = async (petId) =>
+  (await http.get(`/vaccinations/pet/${petId}`)).data;
 
-export const ProductAPI = {
-  list: () => http.get('/products')
-};
+export const getMedicalVisitsByPet = async (petId) =>
+  (await http.get(`/visits/pet/${petId}`)).data;
 
-export const ServiceAPI = {
-  list: () => http.get('/services')
-};
-
-export const OrderAPI = {
-  my: () => http.get('/orders/my')
-};
-
-export const AppointmentAPI = {
-  my: () => http.get('/appointments/my')
-};
+export const getProducts = async () => (await http.get("/products")).data;
+export const getServices = async () => (await http.get("/services")).data;
+export const getOrdersMy = async () => (await http.get("/orders/my")).data;
+export const getAppointmentsMy = async () => (await http.get("/appointments/my")).data;
