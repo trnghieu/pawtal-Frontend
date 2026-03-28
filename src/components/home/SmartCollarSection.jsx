@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { cloudinaryUrl, imageOrFallback } from "../../utils/cloudinary";
 
 const COLLAR_1 =
-  "https://res.cloudinary.com/dlipnztpt/image/upload/v1774662844/Screenshot_2026-03-17_111732-removebg-preview_oqju55.png";
+  "https://res.cloudinary.com/dlipnztpt/image/upload/v1774672618/E349BF3F-20AA-4587-89F5-B4CEBB66DB52_2_1_ywfswh.png";
+
 
 export default function SmartCollarSection() {
   const collarTop = imageOrFallback(
     cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_COLLAR_GREEN, {
-      transforms: "f_auto,q_auto,w_500",
+      transforms: "f_auto,q_auto,h_100",
     }),
     COLLAR_1
   );
@@ -30,14 +31,14 @@ export default function SmartCollarSection() {
     cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_COLLAR_CAT, {
       transforms: "f_auto,q_auto,w_700",
     }),
-    "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=700&q=80"
+    "https://res.cloudinary.com/dlipnztpt/image/upload/v1774673104/IMG_0932_1_1_xtaqkt.png"
   );
 
   const dogPreview = imageOrFallback(
     cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_COLLAR_DOG, {
       transforms: "f_auto,q_auto,w_800",
     }),
-    "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80"
+    "https://res.cloudinary.com/dlipnztpt/image/upload/v1774673093/ChatGPT_Image_22_22_34_23_thg_1_2026_1_2_la6syz.png"
   );
 
   return (
@@ -63,12 +64,7 @@ export default function SmartCollarSection() {
           <div className="smart-collar-swatch">
             <img src={collarTop} alt="Vòng cổ xanh mint" />
           </div>
-          <div className="smart-collar-swatch">
-            <img src={collarMiddle} alt="Vòng cổ hồng" />
-          </div>
-          <div className="smart-collar-swatch">
-            <img src={collarBottom} alt="Vòng cổ xanh dương" />
-          </div>
+
         </div>
 
         <div className="smart-collar-section-v2__previews">

@@ -46,7 +46,7 @@ export default function TrackingPage() {
 
         <div className="tracking-map">
           <img
-            src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1600&q=80"
+            src="https://res.cloudinary.com/dlipnztpt/image/upload/v1774672614/pawtal_map_1_z5fq8x.jpg"
             alt="Map"
           />
           {fakePins.map((pin) => (

@@ -14,10 +14,46 @@ export default function ProfilePage() {
       <PetTabs />
 
       <section className="profile-owner-grid">
-        <div className="profile-owner-side">
+        <div className="profile-left-stack">
           <div className="profile-owner-avatar">
             <div className="profile-owner-avatar__circle">👤</div>
             <div className="profile-owner-avatar__actions">📷 🖼️</div>
+          </div>
+
+          <div className="pet-qr-card">
+            <div className="pet-qr-card__head">
+              <h3>MÃ QR THÚ CƯNG</h3>
+            </div>
+
+            {selectedPet?.qrCode?.url ? (
+              <>
+                <div className="pet-qr-card__image-wrap">
+                  <img
+                    src={selectedPet.qrCode.url}
+                    alt={`QR ${selectedPet.name}`}
+                    className="pet-qr-card__image"
+                  />
+                </div>
+
+                <div className="pet-qr-card__meta">
+                  <strong>{selectedPet?.name || "--"}</strong>
+                  <span>{selectedPet?.publicCode || "QR định danh"}</span>
+                </div>
+
+                <a
+                  href={selectedPet.qrCode.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="primary-btn small"
+                >
+                  Xem QR
+                </a>
+              </>
+            ) : (
+              <div className="pet-qr-card__empty">
+                Chưa có mã QR cho thú cưng này
+              </div>
+            )}
           </div>
         </div>
 

@@ -14,7 +14,7 @@ export default function ShopPage() {
         cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_DOG, {
           transforms: "f_auto,q_auto,w_700",
         }),
-        "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=700&q=80"
+        "https://res.cloudinary.com/dlipnztpt/image/upload/v1774672612/image_152_cnsiik.jpg"
       ),
     },
     {
@@ -24,7 +24,7 @@ export default function ShopPage() {
         cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_CAT, {
           transforms: "f_auto,q_auto,w_700",
         }),
-        "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=700&q=80"
+        "https://res.cloudinary.com/dlipnztpt/image/upload/v1774672612/image_153_zdsapl.jpg"
       ),
     },
   ];
@@ -37,7 +37,7 @@ export default function ShopPage() {
         cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_FOOD, {
           transforms: "f_auto,q_auto,w_500",
         }),
-        "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&w=500&q=80"
+        "https://res.cloudinary.com/dlipnztpt/image/upload/v1774678593/B98A38AA-6235-4CE9-9578-C2EF1749801F_1-removebg-preview_mwrm4c.png"
       ),
     },
     {
@@ -48,7 +48,7 @@ export default function ShopPage() {
         cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_COLLAR, {
           transforms: "f_auto,q_auto,w_500",
         }),
-        "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=500&q=80"
+        "https://res.cloudinary.com/dlipnztpt/image/upload/v1774672873/Untitled_design__4_-removebg-preview_slr7lr.png"
       ),
     },
     {
@@ -58,7 +58,7 @@ export default function ShopPage() {
         cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_TOY, {
           transforms: "f_auto,q_auto,w_500",
         }),
-        "https://images.unsplash.com/photo-1560743173-567a3b5658b1?auto=format&fit=crop&w=500&q=80"
+        "https://res.cloudinary.com/dlipnztpt/image/upload/v1774678588/E51DC3C4-450C-4AB3-B742-B2ED80890D2E_1-removebg-preview_voghsr.png"
       ),
     },
   ];
@@ -73,7 +73,7 @@ export default function ShopPage() {
         cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_FEATURED_1, {
           transforms: "f_auto,q_auto,w_700",
         }),
-        "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=700&q=80"
+        "https://res.cloudinary.com/dlipnztpt/image/upload/v1774672613/ChatGPT_Image_22_22_34_23_thg_1_2026_1_xgxfyq.jpg"
       ),
     },
     {
@@ -84,7 +84,7 @@ export default function ShopPage() {
         cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_FEATURED_2, {
           transforms: "f_auto,q_auto,w_700",
         }),
-        "https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?auto=format&fit=crop&w=700&q=80"
+        "https://res.cloudinary.com/dlipnztpt/image/upload/v1774678795/image-removebg-preview_1_vpprsn.png"
       ),
     },
     {
@@ -95,7 +95,7 @@ export default function ShopPage() {
         cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_SHOP_FEATURED_3, {
           transforms: "f_auto,q_auto,w_700",
         }),
-        "https://images.unsplash.com/photo-1583512603806-077998240c7a?auto=format&fit=crop&w=700&q=80"
+        "https://res.cloudinary.com/dlipnztpt/image/upload/v1774678798/image-removebg-preview_ezlct5.png"
       ),
     },
   ];

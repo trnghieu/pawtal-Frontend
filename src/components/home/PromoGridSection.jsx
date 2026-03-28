@@ -6,28 +6,28 @@ export default function PromoGridSection() {
     cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_CARD_1, {
       transforms: "f_auto,q_auto,w_800",
     }),
-    "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80"
+    "https://res.cloudinary.com/dlipnztpt/image/upload/v1774672616/IMG_9298_1_vdephw.png"
   );
 
   const profileImage = imageOrFallback(
     cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_CARD_2, {
       transforms: "f_auto,q_auto,w_800",
     }),
-    "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=800&q=80"
+    "https://res.cloudinary.com/dlipnztpt/image/upload/v1774673105/IMG_9296_1_mbhmux.png"
   );
 
   const communityImage = imageOrFallback(
     cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_CARD_3, {
       transforms: "f_auto,q_auto,w_1200",
     }),
-    "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=1200&q=80"
+    "https://res.cloudinary.com/dlipnztpt/image/upload/v1774673103/image_150_qzawpd.png"
   );
 
   const servicePetsImage = imageOrFallback(
     cloudinaryUrl(import.meta.env.VITE_CLOUDINARY_HOME_SERVICE_CARD, {
       transforms: "f_auto,q_auto,w_1200",
     }),
-    "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1200&q=80"
+    "https://res.cloudinary.com/dlipnztpt/image/upload/v1774672614/3fb3f8ff5e7096d729bfe920797fc829_1_udo1nz.png"
   );
 
   return (
